@@ -34,22 +34,22 @@ const promptUser = () => {
 const init = () => {
     promptUser()
       .then((res) =>
-        writeFile(`logo_${res.text.toUpperCase()}.svg`, generateSVG(res))
+        writeFile(`logo_${res.text.toUpperCase()}.svg`, generateLogo(res))
       )
       .then(() => console.log(`\n"Logo has been created!"`))
       .catch((err) => console.error(err));
   };
   
-  function generateSVG(res) {
+  function generateLogo(res) {
       let shape;
-      if (res.shape === "Triangle") {
-        shape = new Triangle();
+      if (res.shape === "Circle") {
+        shape = new Circle();
         console.log(shape);
       } else if (res.shape === "Square") {
         shape = new Square();
         console.log(shape);
       } else {
-        shape = new Circle();
+        shape = new Triangle();
         console.log(shape);
       }
       shape.setColor(res.shape_color);
